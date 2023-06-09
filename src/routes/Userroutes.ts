@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { LoggedUser, addUser, getallUser, getuserbyemail } from "../Controlers/usercontroler";
 import ejs from 'ejs'
+import { verifyToken } from "../middlewares/verifytoken";
 
 const userRoute= Router();
 
@@ -15,7 +16,7 @@ const userRoute= Router();
 //     res.render('registration.ejs')
 // })
 
-userRoute.post('',addUser)
+userRoute.post('',verifyToken,addUser)
 userRoute.get('/one',getuserbyemail)
 userRoute.get('/all',getallUser)
 userRoute.post('/login',LoggedUser)

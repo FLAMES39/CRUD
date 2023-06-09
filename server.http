@@ -1,12 +1,13 @@
 ###
 post http://localhost:4000/user
 Content-Type: application/json
+token:rdtfgyuhjk
 
 {
     "userid":"7623HDJ5YY623S",
-    "name":"chrdsis5ewb35",
+    "name":"chrdsis5wdewb35",
     "password":"erqA432",
-    "email":"chrilvcdydbYUERqyfseY@gmail.com",
+    "email":"john@gmaiddfa.com",
     "role":"users"
 }
 
@@ -21,13 +22,14 @@ get http://localhost:4000/user/all
 
 
 ###
-post http://localhost:4000/user?login
+post http://localhost:4000/user/login
 Content-Type: application/json
+token:ftgyuh
 
 {
-    "userid":"7623HDJ5YY623S",
-    "name":"chrdsis5ewb35",
+   
     "password":"erqA432",
-    "email":"chrilYUERY@gmail.com",
-     "role":"users"
+    "email":"john@gmascdhniddfa.com"
+
+
 }
