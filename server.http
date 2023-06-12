@@ -1,35 +1,39 @@
 ###
 post http://localhost:4000/user
 Content-Type: application/json
-token:rdtfgyuhjk
+
 
 {
-    "userid":"7623HDJ5YY623S",
-    "name":"chrdsis5wdewb35",
-    "password":"erqA432",
-    "email":"john@gmaiddfa.com",
+    "userid":"4y2fgx",
+    "name":"MASH",
+    "password":"erRqA432",
+    "email":"mashsh@gmaifgvhddfa.com",
     "role":"users"
 }
 
 ###
 
-get http://localhost:4000/user/one?email='chrilvcdydbYUERqyfseY@gmail.com'
-
+get http://localhost:4000/user/one?email=john@gmaiddfa.com
+ 
 
 ###
 get http://localhost:4000/user/all
 
+###
+get http://localhost:4000/user?userid=5768w
 
 
 ###
 post http://localhost:4000/user/login
 Content-Type: application/json
-token:ftgyuh
+
 
 {
-   
-    "password":"erqA432",
-    "email":"john@gmascdhniddfa.com"
+    "password":"erRqA432",
+    "email":"mashsh@gmaifgvhddfa.com"
 
 
 }
+
+###
+DELETE http://localhost:4000/null
