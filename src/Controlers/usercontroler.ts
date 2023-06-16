@@ -59,7 +59,7 @@ export const getuserbyemail = async (req: Request<{ email: string }>, res: Respo
     try {
         const { email } = req.params as {email:string}
         console.log(email);
-        const user= (await DatabaseHelper.exec('getallUserByEmail',{email:email})).recordset;
+        const user:iusers[]= (await DatabaseHelper.exec('getallUserByEmail',{email:email})).recordset;
         console.log(user);
         
         if (user[0]) {
@@ -75,7 +75,7 @@ export const getuserbyId = async (req: Request<{ userid: string }>, res: Respons
     try {
         const { userid } = req.params as { userid:string}
         console.log(userid);
-        const user= (await DatabaseHelper.exec('sp_getuserById',{userid})).recordset[0];
+        const user:iusers[]=(await DatabaseHelper.exec('sp_getuserById',{userid})).recordset[0];
         console.log(user);
         
         if (user) {
