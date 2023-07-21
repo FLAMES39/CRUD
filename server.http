@@ -4,23 +4,24 @@ Content-Type: application/json
 
 
 {
-    "userid":"678fJx",
-    "name":"MARY",
+    "userid":"212112",
+    "name":"hudini",
     "password":"pxWhA43542",
-    "email":"marymumbi1212@gmail.com",
+    "email":"iduncv2020@gmail.com",
     "role":"users"
 }
 
-###
-
-get http://localhost:4000/user/one?email=john@gmaiddfa.com
- 
 
 ###
-get http://localhost:4000/user/all
+get http://localhost:4000/user
+
 
 ###
-get http://localhost:4000/user?userid=5768w
+get http://localhost:4000/user/iduncv2020@gmail.com
+###
+get http://localhost:4000/user/user/1234
+
+
 
 
 ###
@@ -30,10 +31,22 @@ Content-Type: application/json
 
 {
     "password":"pxWhA43542",
-    "email":"marymumbi1212@gmail.com"
+    "email":"christianaboidun2020@gmail.com"
 
 
 }
 
 ###
-DELETE http://localhost:4000/null
+DELETE http://localhost:4000/user/delete/1234
+
+###
+put http://localhost:4000/user/update/212112
+Content-Type: application/json
+
+{
+    "userid":"212112",
+    "name":"peter",
+    "email":"wen@gmail.com"
+}
+
+

@@ -2,7 +2,7 @@ USE CRUDUI
 GO
 
 create table Users(
-userId VARCHAR (100),
+userid VARCHAR (100) PRIMARY KEY,
 name VARCHAR (100),
 password VARCHAR (100),
 email VARCHAR (100) UNIQUE ,

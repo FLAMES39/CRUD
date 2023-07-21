@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { LoggedUser, addUser, deleteUser, getallUser, getuserbyId, getuserbyemail } from "../Controlers/usercontroler";
+import { LoggedUser, addUser, deleteUser, getallUser, getuserbyId, getuserbyemail, updateUser } from "../Controlers/usercontroler";
 import ejs from 'ejs'
 import { verifyToken } from "../middlewares/verifytoken";
 
@@ -17,11 +17,13 @@ const userRoute= Router();
 // })
 
 userRoute.post('',addUser)
-userRoute.get('/one',getuserbyemail)
-userRoute.get('/all',getallUser)
-userRoute.get('',getuserbyId)
-userRoute.post('/login',LoggedUser)
-userRoute.delete('/:email',deleteUser)
+userRoute.get('/user/:userid',getuserbyId)
+userRoute.get('/:email',getuserbyemail)
+userRoute.get('',getallUser)
+userRoute.post('/:login',LoggedUser)
+userRoute.put('/update/:userid',updateUser)
+userRoute.delete('/delete/:userid',deleteUser)
+
 
 
 export default userRoute;  
