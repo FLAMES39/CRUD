@@ -10,5 +10,5 @@ CREATE OR ALTER PROCEDURE authenticateUsers (@email VARCHAR (100),@password VARC
 AS
 BEGIN
 
-SELECT email,password  FROM users WHERE @email=email AND @password=password 
+SELECT * FROM users WHERE @email=email AND @password=password 
 END

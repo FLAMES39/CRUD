@@ -1,5 +1,5 @@
 import mssql from 'mssql'
-import { Express, Request, Response } from 'express'
+import { Express, Request, RequestHandler, Response } from 'express'
 import { sqlConfig } from '../config'
 import bcrypt from 'bcrypt'
 import { validationSchema } from '../HELPERS/Validation'
@@ -30,7 +30,8 @@ interface ExtendedRequest extends Request {
         role: string
     }
     params:{
-        userid:string
+        userid:string,
+        email:string
     }
 }
 
@@ -41,13 +42,13 @@ export const addUser = async (req: ExtendedRequest, res: Response) => {
         if (error) {
             return res.status(404).json(error.details[0].message)
         }
-        let id = uid()
-        const {userid,name, password, email, role } = req.body
-        console.log(userid);
+        let id= uid()
+        const {  userid, name, password, email, role } = req.body
+        // console.log(userid);
 
         let hashpassword = await bcrypt.hash(password, 10)
 
-        await DatabaseHelper.exec('sp_insertUser', { userid, name, password: hashpassword, email, role })
+        await DatabaseHelper.exec('sp_insertUser', {  userid, name, password: hashpassword, email, role })
 
         return res.status(201).json({ message: "successfull Added" ,})
     } catch (error: any) {
@@ -59,10 +60,10 @@ export const getuserbyemail = async (req: Request<{ email: string }>, res: Respo
     try {
         const { email } = req.params as {email:string}
         console.log(email);
-        const user:iusers[]= (await DatabaseHelper.exec('getallUserByEmail',{email:email})).recordset;
+        const user:iusers= (await DatabaseHelper.exec('getallUserByEmail',{email:email})).recordset[0];
         console.log(user);
         
-        if (user[0]) {
+        if (user) {
             return res.status(200).json(user)
         }
         return res.status(404).json({message:"user not found"})
@@ -75,7 +76,7 @@ export const getuserbyId = async (req: Request<{ userid: string }>, res: Respons
     try {
         const { userid } = req.params as { userid:string}
         console.log(userid);
-        const user:iusers[]=(await DatabaseHelper.exec('sp_getuserById',{userid})).recordset[0];
+        const user:iusers=(await DatabaseHelper.exec('sp_getuserById',{userid})).recordset[0];
         console.log(user);
         
         if (user) {
@@ -121,9 +122,11 @@ export const LoggedUser = async (req: Request, res: Response) => {
     }
 }
 
-export const getallUser = async (req: ExtendedRequest, res: Response) => {
+export const getallUser= async  ( req:ExtendedRequest,res:Response ) => {
     try {
         let user: iusers[] = await (await DatabaseHelper.exec('getallUser')).recordset
+        // console.log(user);
+        
         res.status(200).json(user)
     }
     catch (error: any) {
@@ -133,12 +136,12 @@ export const getallUser = async (req: ExtendedRequest, res: Response) => {
 
 export const deleteUser=async (req:Request <{userid:string}>,res:Response)=>{
 try {
-    const {userid}=req.body 
-    let user:iusers[]=await (await DatabaseHelper.exec('sp_getuserById', { userid })).recordset
-    console.log(userid);
+    const {userid}=req.params as {userid:string}
+    let user:iusers=await (await DatabaseHelper.exec('sp_getuserById', { userid })).recordset[0]
+    // console.log(userid);
     
     if (!user){
-        return res.status(404).json({ message: "user not found" })
+        return res.status(404).json( {message:"User not found"} )
     }
     await DatabaseHelper.exec('sp_deleteUser',{userid})
     console.log();
@@ -147,4 +150,19 @@ try {
 } catch (error:any) {
     return res.status(500).json(error.message)
 }
+}
+export const updateUser = async(req:ExtendedRequest,res:Response)=>{
+    try {
+        const {userid,name,password,email,role}=req.body
+        let user:iusers=await (await DatabaseHelper.exec('sp_getuserById', { userid })).recordset[0]
+        // console.log(userid);
+        
+        if(!user){
+            return res.status(404).json({message:"User not found"})
+        }
+        await DatabaseHelper.exec("sp_updateUser",{ userid, name, password, email, role })
+        return res.status(201).json({message:"User Updated"})
+    } catch (error:any) {
+        return res.status(500).json(error.message)
+    }
 }
