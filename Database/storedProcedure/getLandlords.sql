@@ -1,0 +1,8 @@
+USE CRUDUI
+GO
+
+CREATE PROCEDURE getLandlords
+AS
+BEGIN
+SELECT * FROM  Landlords WHERE IsDeleted=0
+END

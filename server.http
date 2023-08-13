@@ -4,22 +4,39 @@ Content-Type: application/json
 
 
 {
-    "userid":"212112",
-    "name":"hudini",
-    "password":"pxWhA43542",
-    "email":"iduncv2020@gmail.com",
-    "role":"users"
+   
+    "name":"CHS",
+    "password":"khDhA49842",
+    "email":"CHS20@gmail.com"
+   
 }
+
+###
+post http://localhost:4000/user/register/register
+Content-Type: application/json
+
+
+{
+   
+    "name":"chali",
+    "email":"Tchali20@gmail.com", 
+    "password":"khDhA49842"
+    
+}
+
 
 
 ###
 get http://localhost:4000/user
 
 
+
 ###
-get http://localhost:4000/user/iduncv2020@gmail.com
+get http://localhost:4000/user/mashadachris85@gmail.com
+
+
 ###
-get http://localhost:4000/user/user/1234
+get http://localhost:4000/user/user/3
 
 
 
@@ -30,23 +47,122 @@ Content-Type: application/json
 
 
 {
-    "password":"pxWhA43542",
-    "email":"christianaboidun2020@gmail.com"
+    "password":"khDhA49842",
+    "email":"CHESS20@gmail.com"
 
-
+//0701735388 SAM MBOGO
 }
 
 ###
-DELETE http://localhost:4000/user/delete/1234
+DELETE http://localhost:4000/user/delete/1026
 
 ###
-put http://localhost:4000/user/update/212112
+put http://localhost:4000/user/8
 Content-Type: application/json
 
 {
-    "userid":"212112",
-    "name":"peter",
-    "email":"wen@gmail.com"
+    "userid":8,
+    "password":"tbdWyA4787842",
+    "name":"PAUL",
+    "email":"PAUL2020@gmail.com"
 }
 
 
+###
+DELETE http://localhost:4000/user/6
+
+
+
+###
+post http://localhost:4000/property
+Content-Type: application/json
+
+{
+   
+    "name":"BDYABA",
+    "type":"A4FI42",
+    "location":"TPDDPY",
+    "address":"UFVVGGVV6",
+    "price":32,
+    "imageUrl":"https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+    "city":"MACHAHJ",
+    "country":"WESTERNVHJ"
+   
+}
+
+###
+get http://localhost:4000/property
+
+
+###
+get http://localhost:4000/property/prop/72
+
+
+
+###
+post http://localhost:4000/landlord/Register/Register
+Content-Type: application/json
+
+
+{
+   
+    "name":"Helsdsdlo",
+    "password":"1234ASDFasdf",
+    "email":"helsso@gmail.com",
+    "propertyDocs":"qsdRNKDdfPIZROfgh"
+}
+
+
+###
+post http://localhost:4000/landlord/login
+Content-Type: application/json
+
+
+{
+    "password":"1234ASDFasdf",
+    "email":"mashadachris85@gmail.com"
+
+//0701735388 SAM MBOGO
+}
+
+###
+get http://localhost:4000/landlord
+
+###
+put http://localhost:4000/landlord/4
+Content-Type: application/json
+
+{
+   
+    "password":"1234ASDFasdf",
+    "name":"PAUL",
+    "email":"PAUL2020@gmail.com",
+    "propertyDocs":"fLAMABLE CHAMBERS"
+}
+
+###
+get http://localhost:4000/landlord/4
+
+###
+DELETE  http://localhost:4000/landlord/3
+
+
+
+###
+put http://localhost:4000/property/67
+Content-Type: application/json
+
+{
+   "address":"qwertyuiop",
+    "name":"PAUL",
+    "type":"PAULOH",
+    "price":45643,
+    "location":"Knairo",
+    "city":"Nairobi",
+    "imageUrl":"bncmhjkrfejkjrfkcmd",
+    "country":"Kenya"
+}
+
+
+###
+DELETE  http://localhost:4000/property/68
