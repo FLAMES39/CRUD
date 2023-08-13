@@ -1,5 +1,5 @@
 CREATE OR ALTER PROCEDURE sp_updateUser (
-@userid VARCHAR (200),
+@userid INT ,
 @name VARCHAR (200) ,
 @password VARCHAR (100),
 @email VARCHAR (100) ,
@@ -8,7 +8,7 @@ CREATE OR ALTER PROCEDURE sp_updateUser (
 )
 AS
 BEGIN
-UPDATE Users SET userid=@userid,name=@name,password=@password,emaiL=@email,role=@role
+UPDATE Users SET name=@name,password=@password,emaiL=@email,role=@role
 WHERE
 
 IsDelete=0 AND @userid=userid
