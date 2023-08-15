@@ -95,7 +95,7 @@ get http://localhost:4000/property
 
 
 ###
-get http://localhost:4000/property/prop/72
+get http://localhost:4000/property/prop/70
 
 
 
@@ -141,7 +141,7 @@ Content-Type: application/json
 }
 
 ###
-get http://localhost:4000/landlord/4
+get http://localhost:4000/landlord/2
 
 ###
 DELETE  http://localhost:4000/landlord/3
@@ -165,4 +165,4 @@ Content-Type: application/json
 
 
 ###
-DELETE  http://localhost:4000/property/68
+DELETE  http://localhost:4000/property/1071

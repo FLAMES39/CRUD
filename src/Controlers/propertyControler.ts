@@ -22,6 +22,7 @@ interface property {
 }
 interface ExtendedRequest extends Request {
     body: {
+        Propertyid: number
         name: string
         type: string
         location: string
