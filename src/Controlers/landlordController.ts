@@ -23,6 +23,9 @@ interface landlords{
     Ptopertyid:number
 }
 
+
+
+
 interface ExtendedRequest extends Request{
     body:{
         name:string
@@ -68,7 +71,7 @@ export const loginLandlord = async(req:Request,res:Response)=>{
         // console.log(landLord);
         
         if(!landLord[0]){
-            return res.status(404).json({messahe:"LandLord Not Found"})
+            return res.status(404).json({message:"LandLord Not Found"})
         }
         let validpswd = await bcrypt.compare(password,landLord[0].password)
         if(!validpswd){
@@ -97,8 +100,7 @@ try {
 }
 
 export const UpdateLandlord=async(req:ExtendedRequest,res:Response)=>{
-    try {
-       
+    try {  
         const {name,email,propertyDocs,password}=req.body
         let hashpassword= await bcrypt.hash(password,10)
         const {landLordid}=req.params as {landLordid:string}
